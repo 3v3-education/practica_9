@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>    
+        <meta charset="UTF-8" />    
+        <title>Publicaciones</title>
+    </head>
+    <body>    
+        <h1>Listado de Publicaciones</h1>
+        <ul>  
+            {% for publicacion in publicaciones %} 
+            <li>{{ publicacion.titulo }} - {{ publicacion.autor }}</li> 
+            {% endfor %}  
+        </ul>
+        <a href="{% url 'inicio' %}">Volver a inicio</a>
+    </body>
+</html>
