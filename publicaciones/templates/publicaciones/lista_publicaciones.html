@@ -1,16 +1,56 @@
-<!DOCTYPE html>
-<html lang="es">
-    <head>    
-        <meta charset="UTF-8" />    
-        <title>Publicaciones</title>
-    </head>
-    <body>    
-        <h1>Listado de Publicaciones</h1>
-        <ul>  
-            {% for publicacion in publicaciones %} 
-            <li>{{ publicacion.titulo }} - {{ publicacion.autor }}</li> 
-            {% endfor %}  
-        </ul>
-        <a href="{% url 'inicio' %}">Volver a inicio</a>
-    </body>
-</html>
+{% extends "publicaciones/base.html" %}
+
+{% block title %}Publicaciones | Glups{% endblock %}
+
+{% block content %}
+<section class="publicaciones-section">
+
+    <header class="section-header">
+        <h2>Publicaciones</h2>
+        <p>Descubrí las últimas publicaciones de Glups.</p>
+    </header>
+
+    {% if publicaciones %}
+        <div class="publicaciones-list">
+
+            {% for publicacion in publicaciones %}
+                <article class="publicacion-card">
+
+                    <div class="publicacion-card-content">
+                        <h3>{{ publicacion.titulo }}</h3>
+
+                        <p class="publicacion-descripcion">
+                            {{ publicacion.descripcion }}
+                        </p>
+
+                        <div class="publicacion-meta">
+                            <span class="publicacion-autor">
+                                Por {{ publicacion.autor }}
+                            </span>
+
+                            <span class="publicacion-fecha">
+                                {{ publicacion.fecha_creacion|date:"d/m/Y" }}
+                            </span>
+                        </div>
+
+                        {% if publicacion.estado %}
+                            <span class="publicacion-estado">
+                                {{ publicacion.get_estado_display }}
+                            </span>
+                        {% endif %}
+                    </div>
+
+                </article>
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+        <div class="empty-state">
+            <h3>Aún no hay publicaciones</h3>
+            <p>Cuando haya contenido disponible, aparecerá en esta sección.</p>
+        </div>
+    {% endif %}
+
+</section>
+{% endblock %}

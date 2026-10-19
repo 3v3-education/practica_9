@@ -1,13 +1,8 @@
-
-<!DOCTYPE html>
-<html lang="es">
-    <head>    
-        <meta charset="UTF-8" />    
-        <title>Inicio</title>
-    </head>
-    <body>    
-        <h1>Bienvenido a Glup</h1>   
-        <p>Este es el inicio del proyecto.</p>
-        <a href="{% url 'lista_publicaciones' %}">Ver publicaciones</a>
-    </body>
-</html>
+{% extends "publicaciones/base.html" %}
+{% block title %}
+Inicio | Glups
+{% endblock %}
+{% block content %}    
+<h2>Bienvenido a Glups</h2>    
+<p>Este es el inicio del proyecto.</p>
+{% endblock %}
