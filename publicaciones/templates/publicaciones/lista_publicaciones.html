@@ -10,6 +10,8 @@
         <p>Descubrí las últimas publicaciones de Glups.</p>
     </header>
 
+    <a href="{% url 'crear_publicacion' %}">Crear publicacion</a>
+
     {% if publicaciones %}
         <div class="publicaciones-list">
 
@@ -38,9 +40,17 @@
                                 {{ publicacion.get_estado_display }}
                             </span>
                         {% endif %}
+                        <a href="{% url 'editar_publicacion' publicacion.id %}">Editar</a>
+                        <a href="{% url 'detalle_publicacion' publicacion.id %}">Ver</a>
+                        <form action="{% url 'eliminar_publicacion' publicacion.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit">Eliminar</button>
+        
+                        </form>
                     </div>
 
                 </article>
+                
             {% endfor %}
 
         </div>

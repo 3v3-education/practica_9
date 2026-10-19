@@ -21,5 +21,9 @@ from publicaciones import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.inicio, name='inicio'),
-    path('publicaciones/', views.lista_publicaciones, name='lista_publicaciones')
+    path('publicaciones/', views.lista_publicaciones, name='lista_publicaciones'),
+    path('publicacion/<int:id>',views.detalle_publicacion, name= "detalle_publicacion"),
+    path('crear/',views.crear_publicacion, name="crear_publicacion"),
+    path('editar/<int:id>',views.editar_publicacion, name= "editar_publicacion"),
+    path('eliminar/<int:id>',views.eliminar_publicacion, name="eliminar_publicacion")
 ]
