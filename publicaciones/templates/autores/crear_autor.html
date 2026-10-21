@@ -1,0 +1,22 @@
+{% extends "publicaciones/base.html" %}
+{% block title %}
+Crear Autor
+{% endblock %}
+{% block content %}    
+<h2>Nuevo Autor</h2>    
+<form method="POST">
+    {% csrf_token %}
+    <label>Nombre:</label>
+    <input type="text" name="nombre" id="nombre">
+    <br><br>
+    <label>Apellido:</label>
+    <input type="text" name="apellido" id="apellido">
+    <br><br>
+    <label>Email:</label>
+    <input type="text" name="email" id="email">
+    <br><br>
+    <label>Username:</label>
+    <input type="text" name="username" id="username">
+    <button type="submit">Crear Autor</button>
+</form>
+{% endblock %}

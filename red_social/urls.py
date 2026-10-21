@@ -25,5 +25,8 @@ urlpatterns = [
     path('publicacion/<int:id>',views.detalle_publicacion, name= "detalle_publicacion"),
     path('crear/',views.crear_publicacion, name="crear_publicacion"),
     path('editar/<int:id>',views.editar_publicacion, name= "editar_publicacion"),
-    path('eliminar/<int:id>',views.eliminar_publicacion, name="eliminar_publicacion")
+    path('eliminar/<int:id>',views.eliminar_publicacion, name="eliminar_publicacion"),
+    path('autor/crear/',views.crear_autor,name="crear_autor"),
+    path('autores/',views.lista_autores,name="lista_autores"),
+    path('autor/<int:id>/',views.perfil_autor,name="perfil_autor")
 ]
