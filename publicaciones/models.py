@@ -9,6 +9,7 @@ class Publicacion(models.Model):
     autor = models.CharField(max_length=100)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     estado = models.CharField(max_length=20, choices=ESTADOS, default="borrador")
+    url_imagen = models.URLField( max_length=500, blank=True, null=True)
 
     class Meta:
         ordering = ["-fecha_creacion"]
