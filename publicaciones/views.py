@@ -2,6 +2,8 @@ from django.shortcuts import get_object_or_404, redirect, render
 from .models import Autor, Publicacion
 from django.http import HttpResponse
 
+from .forms import ContactoForm
+
 #VISTA DEL INICIO EN LA RAIZ / 
 def inicio(request):
     return render(request, 'publicaciones/inicio.html')
@@ -98,3 +100,23 @@ def eliminar_publicacion(request,id):
 #FROM publicaciones SELECT * 
 # Publicacion.objects.all()
 #CRUD - Create Read Updete Delete
+
+def contacto(request):
+    if request.method == "POST":
+        form = ContactoForm(request.POST)
+
+        if form.is_valid():
+            nombre = form.cleaned_data["nombre"]
+            email = form.cleaned_data["email"]
+            asunto = form.cleaned_data["asunto"]
+            mensaje = form.cleaned_data["mensaje"]
+
+            return render( request, "publicaciones/contacto.html",{
+                "form": ContactoForm(),
+                "enviado":True,
+                "nombre": nombre
+            },)
+    else:
+        form = ContactoForm()
+
+    return render( request, "publicaciones/contacto.html", {"form": form})
